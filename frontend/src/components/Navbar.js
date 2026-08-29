@@ -1,4 +1,4 @@
-import { React } from 'react'
+Ωimport { React } from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router'
 import { useHistory } from 'react-router-dom';
@@ -32,7 +32,43 @@ const Navbar = (props) => {
                         <label className={`form-check-label text-${props.mode === 'light' ? 'dark' : 'light'} me-3`} htmlFor="flexSwitchCheckDefault">{props.btn}</label>
                     </div>
                     {!localStorage.getItem('token') ? <form className="d-flex"><Link className="btn btn-info mx-1" to="/login" role="button">Login</Link>
-                        <Link className="btn btn-info mx-1" to="/signup" role="button">Signup</Link> </form> : <button onClick={handlelogout} className="btn btn-info">Logout</button>}
+                        <Link className="btn btn-info mx-1" to="/signup" role="button">Signup</Link> </form> : <div className="dropdown">
+                        <button
+                            className="btn btn-info rounded-circle"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            {localStorage.getItem("email")?.charAt(0).toUpperCase()}
+                        </button>
+
+                        <ul className="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <h6 className="dropdown-item-text">
+                                    {localStorage.getItem("email")?.split("@")[0]}
+                                </h6>
+                            </li>
+
+                            <li>
+                                <span className="dropdown-item-text">
+                                    {localStorage.getItem("email")}
+                                </span>
+                            </li>
+
+                            <li>
+                                <hr className="dropdown-divider" />
+                            </li>
+
+                            <li>
+                                <button
+                                    onClick={handlelogout}
+                                    className="dropdown-item text-danger"
+                                >
+                                    Logout
+                                </button>
+                            </li>
+                        </ul>
+                    </div>}
                 </div>
             </div>
         </nav>
