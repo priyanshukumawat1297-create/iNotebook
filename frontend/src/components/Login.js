@@ -3,10 +3,11 @@ import { useHistory } from 'react-router-dom';
 
 const Login = (props) => {
     let history = useHistory();
+    const host = "https://i-notebook-lyart.vercel.app";
     const [credentials, setcredentials] = useState({ email: "", password: "" });
     const handlesubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5001/api/auth/login", {
+        const response = await fetch(`${host}/api/auth/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
