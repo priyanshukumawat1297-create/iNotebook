@@ -3,10 +3,11 @@ import { useHistory } from 'react-router-dom';
 
 const Signup = (props) => {
     let history = useHistory();
+    const host = "https://i-notebook-lyart.vercel.app";
     const [credentials, setcredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
     const handlesubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5001/api/auth/createuser", {
+        const response = await fetch(`${host}/api/auth/createuser`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
