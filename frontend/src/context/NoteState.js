@@ -2,7 +2,7 @@ import Notecontext from "./Notecontext";
 import { useState } from "react";
 
 const Notestate = (props) => {
-    const host = "http://localhost:5001";
+    const host = "i-notebook-lyart.vercel.app";
     const notesInitial = [
     ]
 
