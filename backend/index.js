@@ -7,11 +7,13 @@ connectTomongo();
 const app = express()
 const port = 5001
 
-
 app.use(cors({
-    origin: "https://inotebook-notes.vercel.app"
+    origin: "https://inotebook-notes.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "auth-token"]
 }));
 
+app.options('*', cors());
 app.use(express.json())
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
