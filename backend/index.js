@@ -5,7 +5,7 @@ require('dotenv').config();
 connectTomongo();
 
 const app = express()
-const port = 5001
+// const port = 5001
 
 app.use(cors({
     origin: "https://inotebook-notes.vercel.app",
@@ -22,8 +22,8 @@ app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 
 
-app.listen(port, () => {
-  console.log(`iNotebook backend listening on port http://localhost:${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`iNotebook backend listening on port http://localhost:${port}`)
+// })
 
 module.exports = app;
