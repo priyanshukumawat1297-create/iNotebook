@@ -13,7 +13,6 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "auth-token"]
 }));
 
-app.options('*', cors());
 app.use(express.json())
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
@@ -26,3 +25,5 @@ app.use('/api/notes', require('./routes/notes'))
 app.listen(port, () => {
   console.log(`iNotebook backend listening on port http://localhost:${port}`)
 })
+
+module.exports = app;
