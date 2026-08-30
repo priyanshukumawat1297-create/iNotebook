@@ -18,14 +18,14 @@ router.post('/createuser', [
   //If there are errors, return bad request and the errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ success,errors: errors.array() });
+    return res.status(400).json({ success, errors: errors.array() });
   }
 
   // Check whether the user with this email exist already.
   let user = await User.findOne({ email: req.body.email })
   if (user) {
     return res.status(400).json({
-      success,error: "E-mail already in use",
+      success, error: "E-mail already in use",
     });
   }
   const salt = await bcrypt.genSalt(10);
@@ -47,7 +47,7 @@ router.post('/createuser', [
 
   // res.json(user);
   success = true;
-  res.json({success, authtoken });
+  res.json({ success, authtoken });
 })
 
 // ROUTE2. Authenticate a User using :post "/api/auth/login". No login required
@@ -71,7 +71,7 @@ router.post('/login', [
 
     let passwordcompare = await bcrypt.compare(password, user.password)
     if (!passwordcompare) {
-      return res.status(400).json({success, error: "Please try to login with correct credentials", });
+      return res.status(400).json({ success, error: "Please try to login with correct credentials", });
     }
     const data = {
       user: {
