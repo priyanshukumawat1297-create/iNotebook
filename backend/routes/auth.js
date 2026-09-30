@@ -21,6 +21,7 @@ router.post('/createuser', [
     return res.status(400).json({ success, errors: errors.array() });
   }
 
+  try{
   // Check whether the user with this email exist already.
   let user = await User.findOne({ email: req.body.email })
   if (user) {
@@ -48,6 +49,10 @@ router.post('/createuser', [
   // res.json(user);
   success = true;
   res.json({ success, authtoken });
+  }catch(error){
+     console.log(error);
+    res.status(400).send("Some error occured");
+  }
 })
 
 // ROUTE2. Authenticate a User using :post "/api/auth/login". No login required
