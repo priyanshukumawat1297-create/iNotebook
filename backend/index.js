@@ -8,7 +8,7 @@ connectTomongo();
 const app = express();
 
 app.use(cors({
-    origin: "https://inotebook-notes.vercel.app",
+    origin: "https://i-notebook-lyart.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "auth-token"]
 }));
